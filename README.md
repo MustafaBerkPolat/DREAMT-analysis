@@ -79,9 +79,9 @@ For the measurements data, aggregation functions were used to calculate statisti
 
 The visualizations for this project is done entirely within Python using Matplotlib and Seaborn, with the primary focus being on correlation heatmaps
 
-![Medical Disorder History by Occurence in Participants](https://github.com/user-attachments/assets/ab743fc0-3ef9-4052-9f3c-46dcb8eb35dc)
+![Medical Disorder History by Occurence in Participants](https://github.com/user-attachments/assets/ef479fef-1af7-41d8-8494-d22f7614c5d5)
 
-![Sleep Disorders by Occurence in Participants](https://github.com/user-attachments/assets/89b36a5a-f9b2-467f-8406-c0d5b30b532f)
+![Sleep Disorders by Occurence in Participants](https://github.com/user-attachments/assets/dd1a7a5b-ef37-44b8-99cc-14dbc4dda9bc)
 
 For the most part, both the observed and the reported disorders were more common in female participants. There were a total of 55 female participants and 45 male participants. Sleep apnea and asthma were the exception, as they were more common in men despite men being under-represented in this research.
 
