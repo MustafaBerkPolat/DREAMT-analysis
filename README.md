@@ -7,11 +7,16 @@ DREAMT is a dataset collected from 100 participants, including high-resolution s
 
 ## Takeaways
 
+ - The average age and BMI of the participants is 56 and 33.7, respectively, with no information on which days of the week were actually used for the analysis, which might've had a limiting factor on who got to participate. Given that, the results here may not hold for a broader subset of the population.
+ - There is a negative correlation between sleep apnea and time spent awake in bed, which may imply that having an easier time falling asleep is a potential indicator of sleep apnea.
+ - Insomnia has a very strong correlation with EOG and ECG measurements during stage 3 of NREM sleep, and with blood oxygen saturation (SaO2) levels during stage 2, but a very strong negative correlation with respiratory movement during stage 3. Insomnia having a positive correlation with SaO2 contradicts most research in this subject, so there may be mislabeling within the data or an oversight in other papers.
 
 ## Data Used
 
 Only a single dataset was used for this analysis:
  - [DREAMT: Dataset for Real-time sleep stage EstimAtion using Multisensor wearable Technology](https://physionet.org/content/dreamt/2.0.0/)
+
+Due to the restricted nature of this data, neither the raw nor cleaned files are included in this project. 
 
 The data for the measurements taken during sleep are as follows:
 
@@ -72,7 +77,7 @@ For the measurements data, aggregation functions were used to calculate statisti
 
 ### Visualizations
 
-The visualization for this project is done entirely within Python using Matplotlib and Seaborn, with the primary focus being on correlation heatmaps
+The visualizations for this project is done entirely within Python using Matplotlib and Seaborn, with the primary focus being on correlation heatmaps
 
 ![Medical Disorder History by Occurence in Participants](https://github.com/user-attachments/assets/ab743fc0-3ef9-4052-9f3c-46dcb8eb35dc)
 
@@ -93,26 +98,45 @@ Box plot analysis showcases the high amount of outliers in this dataset, which c
 The medical history data for participants is more reliable, as these conditions are represented at a higher ratio compared to the observed conditions. Participants with asthma, depression and anxiety have lower AHIs, possibly due to lower quality of sleep causing apnea events to interrupt their sleep, but such a commentary cannot be made with this data alone as participants with these conditions are not any more likely to wake up during the night according to the measurements taken, based on the duration and occurrence count of the different sleep stages. The most noteworthy finding here is that those with sleep apnea diagnoses do not have higher AHI score than those who do not, indicating that this condition may be under-diagnosed compared to its actual occurrence. 
 
 
-### Correlation Heatmap for REM Sleep Data
-![Correlation Heatmap for REM Sleep Data](https://github.com/user-attachments/assets/45284393-d4a0-4e75-add8-25ae346ddb03)
-
-The REM sleep measurements have several correlations that are either expected or inconsequential. A higher AHI score is associated with higher occurrences of obstructive apnea events during sleep, with roughly 0.6 correlation. The airflow measured by temperature changes (FLOW) has a 0.8 correlation with central apnea occurrences, most likely due to the extended periods of slow breating increasing the temperature of the exhaled breath through ambient body temperature as this measurement is made by an oronasal thermal sensor according to the [research paper](https://raw.githubusercontent.com/mlresearch/v248/main/assets/wang24a/wang24a.pdf) itself. 
-
-Only one participant is reported to have rem sleep behavior disorder (RBD), so any correlations with this condition would most likely be unreliable due to low sample size and lack of a decent control group. Interestingly, all brain activity and only right anterior tibialis muscle activity (RAT) are very positively correlated with one another (>0.9), with the exception of T3-CZ measurements which corresponds to the left temporal region of the brain, responsible for verbal information processing and memory formation. 
-
-As the C4-M1, F4-M1, O2-M1 and CZ-T4 electrode locations during an EEG exam correspond to the motor cortex, right frontal lobe (which helps regulate muscle movements), the right occipital region (which processes visual information) and the right temporal region (which handles non-verbal information processing) respectively, their high activity alongside high RAT implies dream activity occurring. The negative correlation with T3-CZ is potentially due to the cyclical nature of dreaming and then the dream being committed to memory by the left temporal region while the other regions rest, but the lack of correlation with left leg activity is something to explore in a deeper research. 
-
-E1 and E2, which are eye activities measure by an electrooculogram, also have a high correlation with electrode measurements other than T3-CZ, also most likely due to dream activity
-
-
 ### Correlation Heatmap for Awake Data
 ![Correlation Heatmap for Awake Data](https://github.com/user-attachments/assets/52975066-a8f5-4ac4-8fa1-219405491b79)
 
 The main noteworthy correlation here is the awake stage duration and the slightly negative correlation it has with central apnea occurrence (-0.15), hypnopnea occurrence (-0.30) and obstructive apnea occurrence (-0.15), meaning that people who experience different variations of apnea spend less time awake in bed. This may be due to these people having less trouble falling asleep when they initially get in bed. Most other correlations are weak positive correlations between AHI/OAHI and the different apnea variations, which is expected. 
 
 
-### Correlation Heatmap for Non-REM Sleep Data
+### Correlation Heatmap for N1 Sleep Data
+![Correlation Heatmap for N1 Sleep Data](https://github.com/user-attachments/assets/49b94bec-4e47-4a98-9bd0-ce47825144d3)
+
+During the N1 stage of NREM sleep, there is a mild positive correlation (0.59) between airflow as measured through temperature change and the duration of the sleep stage. If the breathing were to slow down more gradually such a correlation would likely not exist, so this potentially indicates that one reason for the N1 stage taking long for some individuals is that their bodies are unable to relax their breathing, or possibly because their bodies have a harder time transitioning to the N2 stage that their breathing takes longer to calm down. There is only one participant with RBD (REM sleep behavior disorder) so any commentary on correlations with this condition would not be healthy or reliable, but it also has a mild correlation with the N1 stage duration in this research which may indicate this condition may have to do with an inability to relax and enter deep sleep in general.
+
+
+### Correlation Heatmap for N2 Sleep Data
+![Correlation Heatmap for N2 Sleep Data](https://github.com/user-attachments/assets/f5fd4476-38e1-43f4-bf5a-3dd072cfc8d8)
+
+The EEG scan values for T3-CZ and Fp1-O2, the electrode regions corresponding to the left temporal and left frontal regions of the brain have a very strong positive correlation with one another but very strong negative correlations to other brain regions' activities as well as eye activities (E1 and E2), while these other brain and eye scans have a very strong positive correlation with one another. Given that both of these regions are associated with memory formation, it implies that memory recording occurs while the other brain areas are resting.
+
+
+### Correlation Heatmap for N3 Sleep Data
+![Correlation Heatmap for N3 Sleep Data](https://github.com/user-attachments/assets/efe3268f-bb3e-4f55-bd04-4bf9aa7b633b)
+
+N3 sleep is the stage of deepest sleep, associated with the slowest brain activity and highest bodily relaxation. Surprisingly, electrocardiogram (ECG) measurements have a very strong correlation with electrooculogram measurements and insomnia during this stage of sleep. On the other hand, the correlation between these measurements and F4-M1, Fp1-O2, temperature-based airflow (THORAX) and right anterior tibialis muscle activity (RAT) measurements are very negative. One would expect FLOW and ECG values to have a positive correlation, as body temperature, heart rate and breathing rate all fall down as the body enters deep rest, but the measurements indicate otherwise. What this means is unfortunately beyond me.
+
+
+### Correlation Heatmap for Aggregate Non-REM Sleep Data
 ![Correlation Heatmap for Non-REM Sleep Data](https://github.com/user-attachments/assets/58fd2d8a-122e-4517-a9a5-5fc2343e9bc0)
+
+
+
+### Correlation Heatmap for REM Sleep Data
+![Correlation Heatmap for REM Sleep Data](https://github.com/user-attachments/assets/45284393-d4a0-4e75-add8-25ae346ddb03)
+
+The REM sleep measurements have several correlations that are either expected or inconsequential. A higher AHI score is associated with higher occurrences of obstructive apnea events during sleep, with roughly 0.6 correlation. The airflow measured by temperature changes (FLOW) has a 0.8 correlation with central apnea occurrences, most likely due to the extended periods of slow breating increasing the temperature of the exhaled breath through ambient body temperature as this measurement is made by an oronasal thermal sensor according to the [research paper](https://raw.githubusercontent.com/mlresearch/v248/main/assets/wang24a/wang24a.pdf) itself. 
+
+Only one participant is reported to have rem sleep behavior disorder (RBD), so any correlations with this condition would most likely be unreliable due to low sample size and lack of a decent control group. Interestingly, all brain activity and only RAT are very positively correlated with one another (>0.9), with the exception of T3-CZ measurements which corresponds to the left temporal region of the brain, responsible for verbal information processing and memory formation. 
+
+As the C4-M1, F4-M1, O2-M1 and CZ-T4 electrode locations during an EEG exam correspond to the motor cortex, right frontal lobe (which helps regulate muscle movements), the right occipital region (which processes visual information) and the right temporal region (which handles non-verbal information processing) respectively, their high activity alongside high RAT implies dream activity occurring. The negative correlation with T3-CZ is potentially due to the cyclical nature of dreaming and then the dream being committed to memory by the left temporal region while the other regions rest, but the lack of correlation with left leg activity is something to explore in a deeper research. 
+
+E1 and E2 also have a high correlation with electrode measurements other than T3-CZ, also most likely due to dream activity.
 
 
 ## Citations
@@ -121,7 +145,7 @@ Original Paper:
 
 Wang, W.K., Yang, J., Hershkovich, L., Jeong, H., Chen, B., Singh, K., Roghanizad, A.R., Shandhi, M.M.H., Spector, A.R. &amp; Dunn, J.. (2024). Addressing Wearable Sleep Tracking Inequity: A New Dataset and Novel Methods for a Population with Sleep Disorders. <i>Proceedings of the fifth Conference on Health, Inference, and Learning</i>, in <i>Proceedings of Machine Learning Research</i> 248:380-396 Available from https://proceedings.mlr.press/v248/wang24a.html.
 
-Resource:
+Dataset:
 
 Wang, K., Yang, J., Shetty, A., & Dunn, J. (2025). DREAMT: Dataset for Real-time sleep stage EstimAtion using Multisensor wearable Technology (version 2.0.0). PhysioNet. https://doi.org/10.13026/0vrv-nn81
 
