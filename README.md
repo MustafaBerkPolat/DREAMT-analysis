@@ -9,7 +9,7 @@ DREAMT is a dataset collected from 100 participants, including high-resolution s
 
  - The average age and BMI of the participants is 56 and 33.7, respectively, with no information on which days of the week were actually used for the analysis, which might've had a limiting factor on who got to participate. Given that, the results here may not hold for a broader subset of the population.
  - There is a negative correlation between sleep apnea and time spent awake in bed, which may imply that having an easier time falling asleep is a potential indicator of sleep apnea.
- - Insomnia has a very strong correlation with EOG and ECG measurements during stage 3 of NREM sleep, and with blood oxygen saturation (SaO2) levels during stage 2, but a very strong negative correlation with respiratory movement during stage 3. Insomnia having a positive correlation with SaO2 contradicts most research in this subject, so there may be mislabeling within the data or an oversight in other papers.
+
 
 ## Data Used
 
@@ -77,7 +77,10 @@ For the measurements data, aggregation functions were used to calculate statisti
 
 ### Visualizations
 
-The visualizations for this project is done entirely within Python using Matplotlib and Seaborn, with the primary focus being on correlation heatmaps
+The visualizations for this project is done entirely within Python using Matplotlib and Seaborn, with a rudimentary Tableau dashboard to check the occurrence of each condition among genders and the participants that have multiple conditions. 
+
+![Medical Condition and Sleep Disorder Counts among Participants](https://github.com/user-attachments/assets/d4791fcb-d9ae-41fc-bfe8-6b1bafb3d02b)
+
 
 ![Medical Disorder History by Occurence in Participants](https://github.com/user-attachments/assets/ef479fef-1af7-41d8-8494-d22f7614c5d5)
 
@@ -119,7 +122,7 @@ The EEG scan values for T3-CZ and Fp1-O2, the electrode regions corresponding to
 ### Correlation Heatmap for N3 Sleep Data
 ![Correlation Heatmap for N3 Sleep Data](https://github.com/user-attachments/assets/efe3268f-bb3e-4f55-bd04-4bf9aa7b633b)
 
-N3 sleep is the stage of deepest sleep, associated with the slowest brain activity and highest bodily relaxation. Surprisingly, electrocardiogram (ECG) measurements have a very strong correlation with electrooculogram measurements and insomnia during this stage of sleep. On the other hand, the correlation between these measurements and F4-M1, Fp1-O2, temperature-based airflow (THORAX) and right anterior tibialis muscle activity (RAT) measurements are very negative. One would expect FLOW and ECG values to have a positive correlation, as body temperature, heart rate and breathing rate all fall down as the body enters deep rest, but the measurements indicate otherwise. What this means is unfortunately beyond me.
+N3 sleep is the stage of deepest sleep, associated with the slowest brain activity and highest bodily relaxation. Surprisingly, electrocardiogram (ECG) measurements have a very strong correlation with electrooculogram measurements and insomnia during this stage of sleep. On the other hand, the correlation between these measurements and F4-M1, Fp1-O2, temperature-based airflow (THORAX) and right anterior tibialis muscle activity (RAT) measurements are very negative. One would expect FLOW and ECG values to have a positive correlation, as body temperature, heart rate and breathing rate all fall down as the body enters deep rest, but the measurements indicate otherwise. The correlation with insomnia is not reliable as only one participant has insomnia, but the rest is potentially worth exploring deeper.
 
 
 ### Correlation Heatmap for Aggregate Non-REM Sleep Data
