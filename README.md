@@ -5,10 +5,8 @@
 DREAMT is a dataset collected from 100 participants, including high-resolution signals from an Empatica E4 smartwatch designed to measure data, expert sleep technician-annotated sleep stage labels and clinical metadata related to sleep health and disorder. This analysis is an exploration of the data within this set, and how measurements and medical health conditions correlate to one another.
 
 
-## Takeaways
 
- - The average age and BMI of the participants is 56 and 33.7, respectively, with no information on which days of the week were actually used for the analysis, which might've had a limiting factor on who got to participate. Given that, the results here may not hold for a broader subset of the population.
- - There is a negative correlation between sleep apnea and time spent awake in bed, which may imply that having an easier time falling asleep is a potential indicator of sleep apnea.
+ - The average age and BMI of the participants is 56 and 33.7, respectively, with no information on which days of the week were actually used for the analysis, which might've had a limiting factor on who got to participate. Several of the conditions participants were identified to have were also observed on only one participant. Given these factors, the results here may not hold for a broader subset of the population or be very healthy to use for deeper analysis.
 
 
 ## Data Used
