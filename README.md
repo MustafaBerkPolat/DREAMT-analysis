@@ -84,7 +84,7 @@ The visualizations for this project is done entirely within Python using Matplot
 
 ![Sleep Disorders by Occurence in Participants](https://github.com/user-attachments/assets/dd1a7a5b-ef37-44b8-99cc-14dbc4dda9bc)
 
-For the most part, both the observed and the reported disorders were more common in female participants. There were a total of 55 female participants and 45 male participants. Sleep apnea and asthma were the exception, as they were more common in men despite men being under-represented in this research.
+For the most part, both the observed and the reported disorders were more common in female participants. There were a total of 55 female participants and 45 male participants. Sleep apnea and hypertension were the exception, as they were more common in men despite men being under-represented in this research.
 
 
 ### Box Plot AHI Analysis for Observed Sleep Disorders
